@@ -24,17 +24,17 @@ internal static class ConfigExtensions
                 optional: false,
                 reloadOnChange: true);
 
-            configBuilder.AddJsonFile(
-                path: $"appsettings.{environment}.json",
-                optional: true,
-                reloadOnChange: true);
+            // configBuilder.AddJsonFile(
+            //     path: $"appsettings.{environment}.json",
+            //     optional: true,
+            //     reloadOnChange: true);
 
-            configBuilder.AddEnvironmentVariables();
+            // configBuilder.AddEnvironmentVariables();
 
-            configBuilder.AddUserSecrets(
-                assembly: Assembly.GetExecutingAssembly(),
-                optional: true,
-                reloadOnChange: true);
+            // configBuilder.AddUserSecrets(
+            //     assembly: Assembly.GetExecutingAssembly(),
+            //     optional: true,
+            //     reloadOnChange: true);
 
             // For settings from Key Vault, see https://learn.microsoft.com/en-us/aspnet/core/security/key-vault-configuration?view=aspnetcore-8.0
             string? keyVaultUri = builderContext.Configuration["Service:KeyVault"];

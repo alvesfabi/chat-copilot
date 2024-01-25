@@ -25,8 +25,7 @@ You will need the following items to run the sample:
 - [.NET 7.0 SDK](https://dotnet.microsoft.com/download/dotnet/7.0) _(via Setup install.\* script)_
 - [Node.js](https://nodejs.org/en/download) _(via Setup install.\* script)_
 - [Yarn](https://classic.yarnpkg.com/docs/install) _(via Setup install.\* script)_
-- [Git](https://www.git-scm.com/downloads)
-- AI Service (one of the following is required)
+- AI Service
 
 | AI Service   | Requirement                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -39,13 +38,7 @@ You will need the following items to run the sample:
 
 1. Open PowerShell as an administrator.
    > NOTE: Ensure that you have [PowerShell Core 6+](https://github.com/PowerShell/PowerShell) installed. This is different from the default PowerShell installed on Windows.
-1. Clone this repository
-   ```powershell
-   git clone https://github.com/microsoft/chat-copilot
-   ```
-1. Setup your environment.
-
-   The following is a script to help you install the dependencies required. Feel free to install `dotnet`, `nodejs`, and `yarn` with your method of choice or use this script.
+2. Setup your environment.
 
    ```powershell
    cd <path to chat-copilot>\scripts\
@@ -56,7 +49,7 @@ You will need the following items to run the sample:
 
    > NOTE: If you receive an error that the script is not digitally signed or cannot execute on the system, you may need to [change the execution policy](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.3#change-the-execution-policy) (see list of [policies](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.3#powershell-execution-policies) and [scopes](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.3#execution-policy-scope)) or [unblock the script](https://learn.microsoft.com/powershell/module/microsoft.powershell.security/get-executionpolicy?view=powershell-7.3#example-4-unblock-a-script-to-run-it-without-changing-the-execution-policy).
 
-1. Configure Chat Copilot.
+3. Configure Chat Copilot.
 
    ```powershell
    .\Configure.ps1 -AIService {AI_SERVICE} -APIKey {API_KEY} -Endpoint {AZURE_OPENAI_ENDPOINT}
@@ -64,19 +57,15 @@ You will need the following items to run the sample:
 
    - `AI_SERVICE`: `AzureOpenAI` or `OpenAI`.
    - `API_KEY`: The `API key` for Azure OpenAI or for OpenAI.
-   - `AZURE_OPENAI_ENDPOINT`: The Azure OpenAI resource `Endpoint` address. This is only required when using Azure OpenAI, omit `-Endpoint` if using OpenAI.
+   - `AZURE_OPENAI_ENDPOINT`: The Azure OpenAI resource `Endpoint` address. Omit `-Endpoint` if using OpenAI.
 
-   - > **IMPORTANT:** For `AzureOpenAI`, if you deployed models `gpt-35-turbo` and `text-embedding-ada-002` with custom names (instead of the default names), also use the parameters:
+   - > **IMPORTANT:** For `AzureOpenAI`, if you deployed models `gpt-35-turbo` and `text-embedding-ada-002` with custom names (instead of each own's given name), also use the parameters:
 
      ```powershell
      -CompletionModel {DEPLOYMENT_NAME} -EmbeddingModel {DEPLOYMENT_NAME} -PlannerModel {DEPLOYMENT_NAME}
      ```
 
-     > -PlannerModel name will be the same as -CompletionModel
-
-     Open the `.\Configure.ps1` script to see all of the available parameters.
-
-1. Run Chat Copilot locally. This step starts both the backend API and frontend application.
+4. Run Chat Copilot locally. This step starts both the backend API and frontend application.
 
    ```powershell
    .\Start.ps1
@@ -94,14 +83,8 @@ You will need the following items to run the sample:
 
 ## Linux/macOS
 
-1. Open Bash as an Administrator.
-1. Clone this repository
-   ```bash
-   git clone https://github.com/microsoft/chat-copilot
-   ```
-1. Configure environment.
-
-   The following is a script to help you install the dependencies required. Feel free to install `dotnet`, `nodejs`, and `yarn` with your method of choice or use this script.
+1. Open Bash as an administrator.
+2. Configure environment.
 
    ```bash
    cd <path to chat-copilot>/scripts/
@@ -123,7 +106,7 @@ You will need the following items to run the sample:
 
    > NOTE: This script uses `homebrew` to install `dotnet-sdk`, `nodejs`, and `yarn`.
 
-1. Configure Chat Copilot.
+3. Configure Chat Copilot.
 
    1. For OpenAI
 
@@ -145,7 +128,7 @@ You will need the following items to run the sample:
       - `API_KEY`: The `API key` for Azure OpenAI.
 
       **IMPORTANT:** If you deployed models `gpt-35-turbo` and `text-embedding-ada-002`
-      with custom names (instead of the default names), you need to specify
+      with custom names (instead of each own's given name), you need to specify
       the deployment names with three additional parameters:
 
       ```bash
@@ -157,9 +140,7 @@ You will need the following items to run the sample:
                      --embeddingmodel  {DEPLOYMENT_NAME}
       ```
 
-      `--plannermodel` will be the same name as `--completionmodel`
-
-1. Run Chat Copilot locally. This step starts both the backend API and frontend application.
+4. Run Chat Copilot locally. This step starts both the backend API and frontend application.
 
    ```bash
    ./start.sh
@@ -267,7 +248,7 @@ By default, Chat Copilot runs locally without authentication, using a guest user
 
    - `AI_SERVICE`: `AzureOpenAI` or `OpenAI`.
    - `API_KEY`: The `API key` for Azure OpenAI or for OpenAI.
-   - `AZURE_OPENAI_ENDPOINT`: The Azure OpenAI resource `Endpoint` address. This is only required when using Azure OpenAI, omit `-Endpoint` if using OpenAI.
+   - `AZURE_OPENAI_ENDPOINT`: The Azure OpenAI resource `Endpoint` address. Omit `-Endpoint` if using OpenAI.
    - `FRONTEND_APPLICATION_ID`: The `Application (client) ID` associated with the application registration for the frontend.
    - `BACKEND_APPLICATION_ID`: The `Application (client) ID` associated with the application registration for the backend.
    - `TENANT_ID` : Your Azure AD tenant ID
