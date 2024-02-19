@@ -320,8 +320,8 @@ public class ChatController : ControllerBase, IDisposable
         // Microsoft API Connector
         if (authHeaders.TryGetValue("APICONNECTOR", out string? ApiConnectorAuthHeader))
         {
-            this._logger.LogInformation("Enabling Microsoft Graph plugin(s).");
-            planner.Kernel.ImportFunctions(new ApiConnectorPlugin(ApiConnectorAuthHeader, this._httpClientFactory), "apiConnector");
+            this._logger.LogInformation("Enabling Microsoft API Connector with OBO plugin(s).");
+            planner.Kernel.ImportFunctions(new ApiConnectorPlugin(ApiConnectorAuthHeader, this._httpClientFactory, this._logger), "apiConnector");
         }
 
         if (variables.TryGetValue("customPlugins", out string? customPluginsString))

@@ -18,24 +18,16 @@ namespace CopilotChat.WebApi.Plugins.APIConnector;
 public sealed class ApiConnectorPlugin
 {
     private readonly string _bearerToken;
-
     private readonly ILogger _logger;
-
     private readonly IHttpClientFactory _clientFactory;
-
     private readonly string _clientId;
-
     private readonly string _clientSecret;
-
     private readonly string _tenantId;
-
     private readonly string _authority;
-
-
 
     //
     // Summary:
-    //     Initializes a new instance of the Microsoft.SemanticKernel.Plugins.TaskListPlugin
+    //     Initializes a new instance of the API Connector plugin with OBO flow
     //     class.
     //
     // Parameters:
@@ -47,22 +39,11 @@ public sealed class ApiConnectorPlugin
     //
     //   loggerFactory:
     //     The factory to use to create ILogger instances.
-    public ApiConnectorPlugin(string bearerToken, IHttpClientFactory clientFactory, ILoggerFactory? loggerFactory = null)
+    public ApiConnectorPlugin(string bearerToken, IHttpClientFactory clientFactory, ILogger logger)
     {
         this._bearerToken = bearerToken ?? throw new ArgumentNullException(bearerToken);
 
         this._clientFactory = clientFactory;
-
-        ILogger logger;
-        if (loggerFactory == null)
-        {
-            ILogger instance = NullLogger.Instance;
-            logger = instance;
-        }
-        else
-        {
-            logger = loggerFactory.CreateLogger(typeof(ApiConnectorPlugin));
-        }
 
         this._logger = logger;
 
