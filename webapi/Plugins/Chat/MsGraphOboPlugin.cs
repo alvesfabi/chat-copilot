@@ -123,8 +123,8 @@ public sealed class MsGraphOboPlugin
             }
         }
 
-        // TODO: Dynamically determine token limit
-        return JsonUtils.OptimizeOdataResponseJson(graphResponseContent, this._responseTokenLimit);
+        var optimizedResponse = JsonUtils.OptimizeOdataResponseJson(graphResponseContent, this._responseTokenLimit);
+        return optimizedResponse.Length > 0 ? optimizedResponse : graphResponseContent;
     }
 
     private async Task<string> GetOboAccessTokenAsync(string graphScopes, CancellationToken cancellationToken)
